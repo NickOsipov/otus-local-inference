@@ -1,7 +1,7 @@
 import requests
 import time
 
-OLLAMA_MODEL = "llama3.2:3b"
+OLLAMA_MODEL = "otus-llama"
 
 
 def chat_with_ollama(prompt):

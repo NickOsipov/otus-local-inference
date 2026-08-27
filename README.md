@@ -30,7 +30,7 @@ hf download unsloth/Llama-3.2-3B-Instruct-GGUF Llama-3.2-3B-Instruct-Q4_K_M.gguf
 uv add "llama-cpp-python[server]"
 ```
 
-### Блок 2. Запуск серверов и Python-клиенты (20 мин)
+### Блок 2. Запуск серверов и Python-клиенты
 
 Теперь поднимем два разных API-сервера и напишем скрипты для обращения к ним.
 
@@ -150,6 +150,7 @@ ollama list
 ```bash
 # Мониторинг VRAM (видеопамяти) в реальном времени, обновление каждую секунду
 watch -n 1 nvidia-smi
+Amdgpu_top
 
 # Мониторинг RAM и ядер CPU (для инференса без GPU)
 htop
@@ -195,3 +196,18 @@ print("-" * 50)
 print(smart_router(long_prompt))
 
 ```
+
+# PS. Установка Ollama как systemd-сервиса
+# создать системного пользователя и каталог для моделей
+sudo useradd -r -s /bin/false -m -d /usr/share/ollama ollama
+sudo mkdir -p /usr/share/ollama/.ollama/models
+sudo chown -R ollama:ollama /usr/share/ollama
+
+# скопировать unit-файл и включить сервис
+sudo cp deploy/ollama.service /etc/systemd/system/ollama.service
+sudo systemctl daemon-reload
+sudo systemctl enable --now ollama
+
+# проверить статус и логи
+sudo systemctl status ollama
+journalctl -u ollama -f
