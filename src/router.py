@@ -1,6 +1,6 @@
 import requests
 
-OLLAMA_MODEL = "llama3.2:3b"
+OLLAMA_MODEL = "otus-llama-practice:latest"
 
 
 def smart_router(prompt):

@@ -1,7 +1,7 @@
 import requests
 import time
 
-OLLAMA_MODEL = "otus-llama"
+OLLAMA_MODEL = "llama3.2:3b"
 
 
 def chat_with_ollama(prompt):
@@ -21,6 +21,7 @@ def chat_with_ollama(prompt):
     
     print(f"[Ollama] Ответ: {response['message']['content'][:100]}...")
     print(f"[Ollama] Скорость: {tokens_per_sec:.2f} tokens/sec")
+    print(f"[Ollama] Время запроса: {duration:.2f} sec")
 
 
 def main():

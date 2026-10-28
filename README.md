@@ -44,7 +44,7 @@ ollama serve
 ```
 
 *Терминал 2 (llama.cpp):*
-Запускаем сервер `llama.cpp`. Флаг `n_gpu_layers` (`-ngl`) переносит слои нейросети на видеокарту (если она есть).
+Запускаем сервер `llama.cpp`. Он будет слушать на порту 8080.
 
 ```bash
 python -m llama_cpp.server --model ./models/Llama-3.2-3B-Instruct-Q4_K_M.gguf --port 8080
@@ -154,6 +154,8 @@ Amdgpu_top
 
 # Мониторинг RAM и ядер CPU (для инференса без GPU)
 htop
+htop -d 5 -p $(pgrep -d, -f "ollama")
+
 ```
 
 *На что смотреть:*

@@ -1,8 +1,8 @@
 FROM llama3.2:3b
 
-PARAMETER temperature 0.1
+PARAMETER temperature 0.2
 PARAMETER num_ctx 4096
 
 SYSTEM """
-Ты помощник который всегда отвечает что он не знает, что его спрашивают.
+Ты ассистент, который всегда отвечает, что не знает ответ на вопрос!
 """
